@@ -21,8 +21,57 @@
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  throw new Error('Not implemented');
+function minesweeper(matrix) {
+  const numberMatrix = matrix.map((row) => row.map(() => 0));
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[0].length; j++) {
+      if (matrix[i][j]) {
+        if (i === 0) {
+          if (j === 0) {
+            numberMatrix[i][j + 1] += 1;
+            numberMatrix[i + 1][j] += 1;
+            numberMatrix[i + 1][j + 1] += 1;
+          } else if (j === matrix[0].length - 1) {
+            numberMatrix[i][j - 1] += 1;
+            numberMatrix[i + 1][j] += 1;
+            numberMatrix[i + 1][j - 1] += 1;
+          } else {
+            numberMatrix[i][j - 1] += 1;
+            numberMatrix[i][j + 1] += 1;
+            numberMatrix[i + 1][j] += 1;
+            numberMatrix[i + 1][j + 1] += 1;
+            numberMatrix[i + 1][j - 1] += 1;
+          }
+        } else if (i === matrix.length - 1) {
+          if (j === 0) {
+            numberMatrix[i][j + 1] += 1;
+            numberMatrix[i - 1][j] += 1;
+            numberMatrix[i - 1][j + 1] += 1;
+          } else if (j === matrix[0].length - 1) {
+            numberMatrix[i][j - 1] += 1;
+            numberMatrix[i - 1][j] += 1;
+            numberMatrix[i - 1][j - 1] += 1;
+          } else {
+            numberMatrix[i][j - 1] += 1;
+            numberMatrix[i][j + 1] += 1;
+            numberMatrix[i - 1][j] += 1;
+            numberMatrix[i - 1][j + 1] += 1;
+            numberMatrix[i - 1][j - 1] += 1;
+          }
+        } else {
+          numberMatrix[i + 1][j] += 1;
+          numberMatrix[i + 1][j + 1] += 1;
+          numberMatrix[i + 1][j - 1] += 1;
+          numberMatrix[i][j - 1] += 1;
+          numberMatrix[i][j + 1] += 1;
+          numberMatrix[i - 1][j] += 1;
+          numberMatrix[i - 1][j + 1] += 1;
+          numberMatrix[i - 1][j - 1] += 1;
+        }
+      }
+    }
+  }
+  return numberMatrix;
 }
 
 module.exports = minesweeper;
