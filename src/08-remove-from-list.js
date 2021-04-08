@@ -18,6 +18,19 @@
  */
 
 function removeKFromList(/* l, k */) {
+  // let tempNode = l;
+  // let prevNode = null;
+
+  // while (l.next !== null) {
+  //   if (l.value === k) {
+  //     return l.next;
+  //   }
+
+  //   tempNode = l.next;
+
+  //   prevNode = l.value;
+  // }
+  // return l;
   throw new Error('Not implemented');
 }
 
